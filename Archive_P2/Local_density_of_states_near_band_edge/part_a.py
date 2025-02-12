@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 import os
 
 # Define the directory path
-directory_path = 'local_density_of_states_heatmap'
+directory_path = 'Local density of states near band edge/local density of states heatmap'
 
+# Create the directory if it doesn't exist
+os.makedirs(directory_path, exist_ok=True)
 
 # List of text files
 text_files = [
@@ -25,13 +27,23 @@ text_files = [
 for i, file_name in enumerate(text_files):
     # Read the data from the text file
     with open(file_name, 'r', encoding='utf-8') as file:
-        data = file.read()
+        lines = file.readlines()
 
-    # Replace commas with periods
-    data = data.replace(',', '.')
+    # Process each line
+    processed_lines = []
+    for line in lines:
+        # Replace commas with periods
+        line = line.replace(',', '.')
+        # Remove trailing commas
+        if line.endswith('.'):
+            line = line[:-1]
+        processed_lines.append(line)
+
+    # Join the processed lines into a single string
+    data_str = ''.join(processed_lines)
 
     # Convert the string data to a NumPy array
-    data = np.fromstring(data, sep=' ')
+    data = np.fromstring(data_str, sep=' ')
 
     # Reshape the data to a 2D array (assuming square matrices)
     size = int(np.sqrt(len(data)))
