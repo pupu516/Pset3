@@ -1,0 +1,9 @@
+The fluctuations in the average local density of states (LDOS) across energy levels suggest the presence of localized electronic states near the conduction and valence band edges in the 2D Moiré system, where peaks indicate electron confinement in potential wells, while dips correspond to delocalized states or energy levels within the band gap, potentially hinting at miniband formation due to Moiré-induced modulations in the electronic structure.
+
+
+
+
+
+
+
+
